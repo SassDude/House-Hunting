@@ -34,14 +34,13 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
-        wanderDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+    
         enemySpawner = FindObjectOfType<EnemySpawner>();
-        timer = wanderDuration;
+
+        SetNewRandomDirection();
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Update the timer
         timer -= Time.deltaTime;
@@ -49,9 +48,7 @@ public class Target : MonoBehaviour
         // Check if the timer has expired
         if (timer <= 0f)
         {
-            // Select a new random direction and reset the timer
-            wanderDirection = Random.insideUnitSphere;
-            timer = wanderDuration;
+            SetNewRandomDirection();
         }
 
         // Move the enemy forward
@@ -61,5 +58,12 @@ public class Target : MonoBehaviour
         Vector3 targetDirection = wanderDirection - transform.position;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDirection);
+    }
+
+    private void SetNewRandomDirection()
+    {
+        // Generate a new random direction and reset the timer
+        wanderDirection = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
+        timer = wanderDuration;
     }
 }

@@ -121,6 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  wanderDuration: 2
+  moveSpeed: 2
+  rotationSpeed: 100
 --- !u!114 &5261783553409653911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dbee13fbed0304fbdd264eb5b1b5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 50
-  wanderTimer: 60
+  wanderRadius: 5
+  wanderTimer: 5
 --- !u!195 &2311912294880761521
 NavMeshAgent:
   m_ObjectHideFlags: 0
