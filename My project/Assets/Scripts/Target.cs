@@ -49,6 +49,7 @@ public class Target : MonoBehaviour
         if (timer <= 0f)
         {
             SetNewRandomDirection();
+            timer = wanderDuration;
         }
 
         // Move the enemy forward
@@ -64,6 +65,11 @@ public class Target : MonoBehaviour
     {
         // Generate a new random direction and reset the timer
         wanderDirection = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
-        timer = wanderDuration;
+        wanderDirection.y = 0f;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        SetNewRandomDirection();
     }
 }
